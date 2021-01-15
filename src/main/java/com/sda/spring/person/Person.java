@@ -1,21 +1,26 @@
 package com.sda.spring.person;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Component;
+import java.time.LocalDate;
 
-@Component
-@Profile("krzysztof")
-public class Person implements PersonInt {
+public class Person {
 
-    @Value("100")
     private int personId;
+    private String firstName;
+    private String lastName;
+    private LocalDate birthDate;
+    private double salary;
 
-    @Value("${person.name:Anna}")
-    private String name;
+    public Person() {
+    }
 
+    public Person(String firstName, String lastName, LocalDate birthDate, double salary) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+        this.salary = salary;
+    }
 
-       public int getPersonId() {
+    public int getPersonId() {
         return personId;
     }
 
@@ -23,20 +28,46 @@ public class Person implements PersonInt {
         this.personId = personId;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     @Override
     public String toString() {
         return "Person{" +
                 "personId=" + personId +
-                ", name='" + name + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthDate=" + birthDate +
+                ", salary=" + salary +
                 '}';
     }
-
 }
